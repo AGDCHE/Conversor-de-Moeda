@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moeda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cossette+Titre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <img src="./Imagens/logo.png" class="logo" alt="logo">
+
+    <div class="caixa texto">
+
+        <h1>Conversor de <span>MOEDA</span></h1>
+
+        <p>Bem vindo ao Conversor de Moeda! Aqui você pode ver quanto custa por exemplo, 5 doláres em dinheiro
+            brasileiro (BRL) e vários outros
+            tipos de
+            moedas.<br>Agora abaixo,você poderá ver as moedas sendo transformados na moeda que você dejesa.<br></p>
+
+    </div>
+
+    <div class="painel">
+
+        <h2>Selecione abaixo a MOEDA e coloque o valor</h2>
+
+        <div class="convert-from">
+            <p class="label">Converter de:</p>
+            <select class="currency-select">
+                <label>Converter de:</label>
+                <option>R$ Real Brasileiro</option>
+            </select>
+        </div>
+
+        <div class="convert-to">
+            <p class="label">Converter para:</p>
+            <select id="currency-select" class="currency-select">
+                <option value="dolar">US$ Dólar Americano</option>
+                <option value="euro">€ Euro</option>
+            </select>
+        </div>
+
+        <p class="value">Valor:</p>
+<input type="number" id="value" placeholder="0.00">
+
+        <button id="convert-button">Converter</button>
+
+        <div class="result">
+
+            <div class="convert">
+
+                <div>
+                    <label class="alt">Converção de:</label>
+                    <p class="text">Real Brasileiro</p>
+                </div>
+                <div>
+                    <label class="alt">Valor a Converter :</label>
+                    <p class="text" id="currency-value-to-convert">R$ 0.00</p>
+                </div>
+
+            </div>
+
+            <div class="converted">
+
+                <div>
+                    <label class="alt-1">Converção de:</label>
+                    <p class="text-1" id="currency-name">Dolar americano</p>
+                </div>
+                <div>
+                    <label class="alt-1">Valor a Converter :</label>
+                    <p class="text-1" id="currency-value">$ 0.00</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+<script src="scripts.js">
+
+</script>
+
+</html>
