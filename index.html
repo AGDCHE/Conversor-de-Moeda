@@ -32,24 +32,30 @@
 
         <div class="convert-from">
             <p class="label">Converter de:</p>
-            <select class="currency-select">
+            <select id="currency-to-convert" class="currency-select">
                 <label>Converter de:</label>
-                <option>R$ Real Brasileiro</option>
+                <option value="real a converter">R$ Real Brasileiro</option>
+                <option value="dolar a converter">US$ Dólar Americano</option>
+                <option value="euro a converter">€ Euro</option>
+                <option value="peso a converter">₱ Peso Argentino</option>
+                <option value="iene a converter">¥ Iene Japonês</option>
             </select>
         </div>
 
         <div class="convert-to">
             <p class="label">Converter para:</p>
             <select id="currency-select" class="currency-select">
-                <option value="dolar">US$ Dólar Americano</option>
-                <option value="euro">€ Euro</option>
-                <option value="peso">₱ Peso Argentino</option>
-                <option value="iene">¥ Iene Japonês</option>
+                <option value="dolar convertido">US$ Dólar Americano</option>
+                <option value="real convertido">R$ Real Brasileiro</option>
+                <option value="euro convertido">€ Euro</option>
+                <option value="peso convertido">₱ Peso Argentino</option>
+                <option value="iene convertido">¥ Iene Japonês</option>
             </select>
         </div>
 
         <p class="value">Valor:</p>
-<input type="number" id="value" placeholder="0.00">
+
+        <input type="number" id="value" placeholder="0.00">
 
         <button id="convert-button">Converter</button>
 
@@ -59,11 +65,11 @@
 
                 <div>
                     <label class="alt">Converção de:</label>
-                    <p class="text">Real Brasileiro</p>
+                    <p class="text" id="currency-name-to-convert">Real Brasileiro</p>
                 </div>
                 <div>
                     <label class="alt">Valor a Converter :</label>
-                    <p class="text" id="currency-value-to-convert">R$ 0.00</p>
+                    <p class="text" id="currency-value-to-convert">R$ 0,00</p>
                 </div>
 
             </div>
@@ -76,7 +82,7 @@
                 </div>
                 <div>
                     <label class="alt-1">Valor a Converter :</label>
-                    <p class="text-1" id="currency-value">$ 0.00</p>
+                    <p class="text-1" id="currency-value">$ 0,00</p>
                 </div>
 
             </div>
