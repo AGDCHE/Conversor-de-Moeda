@@ -7,8 +7,10 @@ function convertValue() {
     const CurrencyValueToConvert = document.getElementById("currency-value-to-convert")
     const CurrencyValueConverted = document.getElementById("currency-value")
 
-    const dolarToday = 5.32
+    const dolarToday = 5.50
     const euroToday = 6.22
+    const pesoToday = 0.0038643
+    const ieneToday = 0.036
 
     if (currencySelect.value == "dolar") {
         CurrencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
@@ -24,6 +26,20 @@ function convertValue() {
         }).format(inputCurrencyValue / euroToday)
 
     }
+
+if (currencySelect.value == "peso") {
+    CurrencyValueConverted.innerHTML = new Intl.NumberFormat("es-AR", {
+        style: "currency",
+        currency: "ARS"
+    }).format(inputCurrencyValue / pesoToday)
+}
+
+if (currencySelect.value == "iene") {
+    CurrencyValueConverted.innerHTML = new Intl.NumberFormat("ja-JP", {
+        style: "currency",
+        currency: "JPY"
+    }).format(inputCurrencyValue / ieneToday)
+}
 
     CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
@@ -44,6 +60,15 @@ function changeCurrency() {
         currencyName.innerHTML = "Euro"
 
     }
+
+if (currencySelect.value == "peso") {
+    currencyName.innerHTML = "Peso Argentino"
+}
+
+if (currencySelect.value == "iene") {
+    currencyName.innerHTML = "Iene Japones"
+}
+
     convertValue()
 
 }
