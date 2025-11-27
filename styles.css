@@ -152,3 +152,8 @@ padding: 10px;
     border-radius: 5px;
 }
 
+@media screen and (max-width: 500px) {
+    .logo {
+        position: relative;
+    }
+}
