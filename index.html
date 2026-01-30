@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Cossette+Titre:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
     <img src="./Imagens/logo.png" class="logo" alt="logo">
 
     <div class="caixa texto">
 
         <h1>Conversor de <span>MOEDA</span></h1>
 
-        <p>Bem vindo ao Conversor de Moeda! Aqui você pode ver quanto custa por exemplo, 5 doláres em dinheiro
-            brasileiro (BRL) e vários outros
-            tipos de
-            moedas.<br>Agora abaixo,você poderá ver as moedas sendo transformados na moeda que você dejesa.<br></p>
+        <p class="main-text">Bem vindo ao Conversor de Moeda! Aqui você pode ver quanto custa por exemplo, 5 doláres em dinheiro
+            brasileiro (BRL) e vários outros tipos de moedas.<br>Agora abaixo,você poderá ver as moedas sendo transformados na 
+            moeda que você dejesa.<br></p>
 
     </div>
 
@@ -34,20 +30,20 @@
             <p class="label">Converter de:</p>
             <select id="currency-to-convert" class="currency-select">
                 <label>Converter de:</label>
-                <option value="real a converter">R$ Real Brasileiro</option>
-                <option value="dolar a converter">US$ Dólar Americano</option>
-                <option value="euro a converter">€ Euro</option>
-                <option value="iene a converter">¥ Iene Japonês</option>
+                <option value="BRL">R$ Real Brasileiro</option>
+                <option value="USD">US$ Dólar Americano</option>
+                <option value="EUR">€ Euro</option>
+                <option value="JPY">¥ Iene Japonês</option>
             </select>
         </div>
 
         <div class="convert-to">
             <p class="label">Converter para:</p>
             <select id="currency-select" class="currency-select">
-                <option value="dolar convertido">US$ Dólar Americano</option>
-                <option value="real convertido">R$ Real Brasileiro</option>
-                <option value="euro convertido">€ Euro</option>
-                <option value="iene convertido">¥ Iene Japonês</option>
+                <option value="USD">US$ Dólar Americano</option>
+                <option value="BRL">R$ Real Brasileiro</option>
+                <option value="EUR">€ Euro</option>
+                <option value="JPY">¥ Iene Japonês</option>
             </select>
         </div>
 
@@ -88,10 +84,6 @@
         </div>
 
     </div>
-
-
 </body>
-
 <script src="scripts.js"></script>
-
 </html>

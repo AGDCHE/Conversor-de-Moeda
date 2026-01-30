@@ -22,8 +22,7 @@ h1 {
     font-size: 30px;
     font-weight: 700;
     position: relative;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 20px auto;
 }
 
 h2 {
@@ -77,6 +76,11 @@ button {
     cursor: pointer;
 }
 
+.main-text {
+    width: 526px;
+    margin: 0 auto;
+}
+
 .logo {
     position: fixed;
     top: 0;
@@ -86,11 +90,11 @@ button {
 
 .painel {
     padding: 10px;
-    margin: 50px auto 0;
-    display: block;
+    margin: 20px auto 20px;
+    display: flex;
+    flex-direction: column;
     width: 400px;
     height: 700px;
-    position: relative;
     background: #404040;
     border: none;
     border-radius: 40px;
@@ -133,13 +137,14 @@ button {
 }
 
 .convert {
-padding: 10px;
+    padding: 10px;
     margin-bottom: 10px;
     border: 1px solid;
     border-radius: 5px;
 }
 
-.text , .text-1 {
+.text,
+.text-1 {
     font-size: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -152,8 +157,20 @@ padding: 10px;
     border-radius: 5px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 750px) {
     .logo {
-        position: relative;
+        position: absolute;
+    }
+}
+
+@media screen and (max-width: 526px) {
+    .main-text {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 502px) {
+    .logo {
+        width: 70px;
     }
 }

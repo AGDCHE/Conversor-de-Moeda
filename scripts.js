@@ -2,184 +2,82 @@ const convertButton = document.getElementById("convert-button")
 const currencySelect = document.getElementById("currency-select")
 const currencyToConvert = document.getElementById("currency-to-convert")
 
-function convertValue() {
-    const inputCurrencyValue = document.getElementById("value").value
+const API_KEY = "a99cab827a5ff3e2a8ce62ed"
 
-    const CurrencyValueToConvert = document.getElementById("currency-value-to-convert")
-    const CurrencyValueConverted = document.getElementById("currency-value")
-    /* Converter em reais */
-    const dolarToday = (inputCurrencyValue * 0.19)
-    const euroToday = (inputCurrencyValue * 0.16)
-    const ieneToday = (inputCurrencyValue * 29.00)
-    /* Converter em reais */
-    //Converter em Dolar
-    const dolarToReal = (inputCurrencyValue * 5.35)
-    const dolarToEuro = (inputCurrencyValue * 0.86)
-    const dolarToIene = (inputCurrencyValue * 156.42)
-    //Converter em Dolar
-    //Converter em Euro
-    const euroToDolar = (inputCurrencyValue * 1.16)
-    const euroToReal = (inputCurrencyValue * 6.20)
-    const euroToIene = (inputCurrencyValue * 181.31)
-    //converter em Euro
-    //converter em Iene
-    const ieneToDolar = (inputCurrencyValue * 0.0064)
-    const ieneToEuro = (inputCurrencyValue * 0.0055)
-    const ieneToReal = (inputCurrencyValue * 0.034)
-    //converter em Iene
-    if (currencySelect.value == "dolar convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD",
-        }).format(dolarToday)
+const currencyNames = {
+  BRL: "Real Brasileiro",
+  USD: "Dólar Americano",
+  EUR: "Euro",
+  JPY: "Iene Japonês"
+}
+
+const locales = {
+  BRL: "pt-BR",
+  USD: "en-US",
+  EUR: "de-DE",
+  JPY: "ja-JP"
+}
+
+async function convertValue() {
+  const inputValue = Number(document.getElementById("value").value)
+  const valueToConvert = document.getElementById("currency-value-to-convert")
+  const valueConverted = document.getElementById("currency-value")
+
+  if (!inputValue || inputValue <= 0) {
+    valueConverted.innerHTML = "Valor inválido ❌"
+    return
+  }
+
+  const fromCurrency = currencyToConvert.value
+  const toCurrency = currencySelect.value
+
+  // mostra valor de origem formatado
+  valueToConvert.innerHTML = new Intl.NumberFormat(
+    locales[fromCurrency],
+    { style: "currency", currency: fromCurrency }
+  ).format(inputValue)
+
+  try {
+    // 🚨 SEMPRE USD no plano grátis
+    const response = await fetch(
+      `https://v6.exchangerate-api.com/v6/a99cab827a5ff3e2a8ce62ed/latest/USD`
+    )
+
+    const data = await response.json()
+
+    if (data.result !== "success") {
+      valueConverted.innerHTML = "Erro na API ❌"
+      console.error(data)
+      return
     }
-    if (currencySelect.value == "euro convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR"
-        }).format(euroToday)
-    }
-    if (currencySelect.value == "iene convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("ja-JP", {
-            style: "currency",
-            currency: "JPY"
-        }).format(ieneToday)
-    }
-    if (currencySelect.value == "real convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        }).format(inputCurrencyValue)
-    }
-    if (currencyToConvert.value == "dolar a converter") {
-        CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-        }).format(inputCurrencyValue)
-    }
-    if (currencyToConvert.value == "euro a converter") {
-        CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR"
-        }).format(inputCurrencyValue)
-    }
-    if (currencyToConvert.value == "iene a converter") {
-        CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("ja-JP", {
-            style: "currency",
-            currency: "JPY"
-        }).format(inputCurrencyValue)
-    }
-    if (currencyToConvert.value == "real a converter") {
-        CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        }).format(inputCurrencyValue)
-    }
-    if (currencyToConvert.value == "dolar a converter" && currencySelect.value == "dolar convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-        }).format(inputCurrencyValue)
-    }
-    if (currencyToConvert.value == "euro a converter" && currencySelect.value == "euro convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR"
-        }).format(inputCurrencyValue)
-    }
-    if (currencyToConvert.value == "iene a converter" && currencySelect.value == "iene convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("ja-JP", {
-            style: "currency",
-            currency: "JPY"
-        }).format(inputCurrencyValue)
-    }
-    if (currencyToConvert.value == "dolar a converter" && currencySelect.value == "real convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        }).format(dolarToReal)
-    }
-    if (currencyToConvert.value == "dolar a converter" && currencySelect.value == "euro convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR"
-        }).format(dolarToEuro)
-    }
-    if (currencyToConvert.value == "dolar a converter" && currencySelect.value == "iene convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("ja-JP", {
-            style: "currency",
-            currency: "JPY"
-        }).format(dolarToIene)
-    }
-    if (currencyToConvert.value == "euro a converter" && currencySelect.value == "dolar convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-        }).format(euroToDolar)
-    }
-    if (currencyToConvert.value == "euro a converter" && currencySelect.value == "real convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        }).format(euroToReal)
-    }
-    if (currencyToConvert.value == "euro a converter" && currencySelect.value == "iene convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("ja-JP", {
-            style: "currency",
-            currency: "JPY"
-        }).format(euroToIene)
-    }
-    if (currencyToConvert.value == "iene a converter" && currencySelect.value == "dolar convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-        }).format(ieneToDolar)
-    }
-    if (currencyToConvert.value == "iene a converter" && currencySelect.value == "euro convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR"
-        }).format(ieneToEuro)
-    }
-    if (currencyToConvert.value == "iene a converter" && currencySelect.value == "real convertido") {
-        CurrencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        }).format(ieneToReal)
-    }
+
+    const rateFrom = data.conversion_rates[fromCurrency]
+    const rateTo = data.conversion_rates[toCurrency]
+
+    // 🔁 conversão indireta
+    const usdValue = inputValue / rateFrom
+    const finalValue = usdValue * rateTo
+
+    valueConverted.innerHTML = new Intl.NumberFormat(
+      locales[toCurrency],
+      { style: "currency", currency: toCurrency }
+    ).format(finalValue)
+
+  } catch (error) {
+    console.error(error)
+    valueConverted.innerHTML = "Erro ao converter 😢"
+  }
 }
 
 function changeCurrency() {
-    const currencyName = document.getElementById("currency-name")
-    const currencyNameToConvert = document.getElementById("currency-name-to-convert")
+  document.getElementById("currency-name").innerHTML =
+    currencyNames[currencySelect.value]
 
-    if (currencySelect.value == "dolar convertido") {
-        currencyName.innerHTML = "Dólar americano"
-    }
-    if (currencySelect.value == "euro convertido") {
-        currencyName.innerHTML = "Euro"
-    }
-    if (currencySelect.value == "iene convertido") {
-        currencyName.innerHTML = "Iene Japonês"
-    }
-    if (currencySelect.value == "real convertido") {
-        currencyName.innerHTML = "Real Brasileiro"
-    }
-    if (currencyToConvert.value == "dolar a converter") {
-        currencyNameToConvert.innerHTML = "Dólar americano"
-    }
-    if (currencyToConvert.value == "euro a converter") {
-        currencyNameToConvert.innerHTML = "Euro"
-    }
-    if (currencyToConvert.value == "iene a converter") {
-        currencyNameToConvert.innerHTML = "Iene Japonês"
-    }
-    if (currencyToConvert.value == "real a converter") {
-        currencyNameToConvert.innerHTML = "Real Brasileiro"
-    }
-    convertValue()
+  document.getElementById("currency-name-to-convert").innerHTML =
+    currencyNames[currencyToConvert.value]
+
+  convertValue()
 }
-
 currencySelect.addEventListener("change", changeCurrency)
 currencyToConvert.addEventListener("change", changeCurrency)
 convertButton.addEventListener("click", convertValue)
