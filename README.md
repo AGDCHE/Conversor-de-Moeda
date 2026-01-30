@@ -81,7 +81,7 @@
 
 ## 📸 Prints (Notebook Vaio e Android Redmi Note 13)
 
-<div align="center"> <img src="assents-README.md/tela-do-conversor-de-moeda.png"> <img src="assents-README.md/tela-do-conversor-de-moeda-android.jpg" width="300px"> </div>
+<div align="center"> <img src="assents-README.md/Imagens Conversor de Moeda.png"></div>
 
 ## 📄 Licença
 
